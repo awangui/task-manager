@@ -42,7 +42,7 @@ li {
   cursor: pointer;
 }
 
-li.completed {
+li.completed .task {
   text-decoration: line-through;
   color: gray;
 }
@@ -54,4 +54,7 @@ li button {
   border: none;
   cursor: pointer;
   font-size: 16px;
+}
+li span {
+  flex-grow: 1;
 }

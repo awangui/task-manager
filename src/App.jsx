@@ -18,12 +18,10 @@ function App() {
   }
   //function to toggle task completion
   const toggleTask = (index) => {
-    setTasks((prevTasks) =>
-      prevTasks.map((task, i) =>
-        i === index ? { ...task, completed: !task.completed } : task
-      )
-    );
-  };
+    const updatedTasks = [...tasks];
+    updatedTasks[index].completed = !updatedTasks[index].completed;
+    setTasks(updatedTasks);
+  }
   
   return (
     <div className='app'>
@@ -44,10 +42,10 @@ function App() {
       <div className='task-list'>
         <ul>
           {tasks.map((task, index)=>(
-            <li key={index}>
+             <li key={index} className={task.completed ? "completed" : ""}>
               <span  className='number'>{index +1}</span>
-              <span onClick={() => toggleTask(index)}>{task.text}</span>
-            <button onClick={()=>deleteTask(index)}>❌</button>
+              <span onClick={() => toggleTask(index)} className='task'>{task.text}</span>
+            <button onClick={()=>deleteTask(index)}>🗑️</button>
             </li>
           ))}
         </ul>
